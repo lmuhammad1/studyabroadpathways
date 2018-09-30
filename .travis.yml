@@ -1,0 +1,20 @@
+language: ruby
+rvm:
+- 2.5.1
+before_script:
+- bundle exec rake db:create --all
+- bundle exec rake db:migrate
+script:
+- bundle exec rake ci:tests
+services:
+- postgresql
+deploy:
+  provider: heroku
+  api_key:
+    secure: QFWxxmNxWGLLouXN4U181jwitsEnSp/B4niJr/L+WcvJX16JhlZ4+OkJhVxWHfPxgPle9XhtEPzitdcaCAHrsZE8C8OI+74Ud7P/TzMll+RPXDACFE+/m8ydOKWrlHpS+28Z/BEhi7TgwhmURt+hZeXvPpLvp3OaprnrB7VY7y5Z9fLUiy/LJ1gi/7d3jSR8eb8gPRzPqlHvqUMvdPdUWwavU6IKqW/vJ+tE6madDQ6pg1r+sX/Hnqj9nisx3aYNZvkYdkEWxlztrD8mbwY0Ji5Bge7RLmZ60kTtlQlbOoFChveiycBgrTCymetYy76psxfBO3gGKZjrrH8YUK+RBhrEBepsunW/tg+P2V2TnAMC6krRKjq04gMgQumHPT8Lx1yPx1uyRXJdU8GD4BvA5IR7ZWrN3jGs40/Pc3tdNqdROMM97G1WL1tPUEQ4awbaVBoF4VgcC/s0qhpIkMHlPt0hfeqFLlTsCjo4afsSmyb1ypkaMkNA4PxqG+YUIeSsezNrLLiMRQmYFZbC3tLivDthCeCC8Dw+7qn+TTbu8Xfk9mJO4H/04dcxhnuLc+ObuylPqTxsD/ujJWT0FeI3H04VYHmf9ybFwar/GbsT2AD8zbPIb/X3fd9k37i6QhREEvZn+ueq301vKX9UyMti6PZ++uTW6GHntMj2rPZFVzg=
+  app: sapathways-development
+  on:
+    repo: lmuhammad1/studyabroadpathways
+    branch: develop
+  run:
+    - "rails db:migrate"
