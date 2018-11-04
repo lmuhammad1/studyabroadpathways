@@ -12,6 +12,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'rubocop', require: false
 
 group :development, :test do
   gem 'rspec-rails'
@@ -22,6 +23,7 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'coveralls', require: false
+  gem "loofah", ">= 2.2.3"
 end
 
 group :development do
